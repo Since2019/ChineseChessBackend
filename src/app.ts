@@ -28,6 +28,10 @@ class App {
     constructor () {
         // Express Server uses cors and will be wrapped by http.
         this.expressServer = express().use(cors(options)); 
+        this.middlewares();
+        this.routes();  
+
+        this.server = new http.Server(this.expressServer)
 
         // instantiate the socket server upon express server
         this.socketServer = new SocketIoServer(this.server, {
@@ -37,11 +41,9 @@ class App {
             }
         });
 
-        this.server = new http.Server(this.expressServer)
 
 
-        this.middlewares();
-        this.routes();  
+  
         
     }
 
