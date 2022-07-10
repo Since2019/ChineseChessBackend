@@ -10,10 +10,6 @@ import http from "http"; // SocketIoServer accepts a type of http.Server
 
 import cors from 'cors' // to get rid of Cross-Origin-Not-Allowed issues    
 
-
-// import { Server, Socket } from "socket.io";
-
-
 const allowedOrigins = ['*'];
 const options: cors.CorsOptions = {
     origin: allowedOrigins

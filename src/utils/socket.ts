@@ -31,9 +31,7 @@ class SocketIoServer extends Server {
 
         const that = this; // this = new Server(server, {<config>})
         
-        // console.log("socketServer",that)
-
-        this.on('connection', (socket: Socket) => {
+        that.on('connection', (socket: Socket) => {
 
             console.log("incoming socket connection, id:", socket.id);
 
@@ -53,7 +51,7 @@ class SocketIoServer extends Server {
                 socket.on('room-chat-message', (message) => {
                     console.log("user", socket.handshake.auth.name, "sent room-chat-message:", message)
 
-                    this.to(room_id).emit("room-chat-message", {
+                    that.to(room_id).emit("room-chat-message", {
                         name: socket.handshake.auth.name,
                         message
                     });
@@ -71,10 +69,6 @@ class SocketIoServer extends Server {
 
         });
     }
-
-
-
-
 }
 
 
